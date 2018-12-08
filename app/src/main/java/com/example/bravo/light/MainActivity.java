@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    //Repeating every one second
+    //Repeating every half second
     Handler handler = new Handler();
     Runnable runnable = new Runnable() {
         @Override
