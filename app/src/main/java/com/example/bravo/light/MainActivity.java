@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -15,25 +16,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        randomColors();
+        randomBackgroundColor();
     }
 
 
     //Creating random color in hexadecimal value
-    public void randomColors() {
-        View view;
-        view = this.getWindow().getDecorView();
+    public void randomBackgroundColor() {
+        View view = this.getWindow().getDecorView(); //Current screen
+
         char[] colorCode = new char[6];
         Random generator = new Random();
         for (int i = 0; i <= 5; i++) {
             int hexNum = generator.nextInt(16);
-            colorCode[i] = Character.forDigit(hexNum, 16);
+            colorCode[i] = Character.forDigit(hexNum, 16); //From 0...F
 
         }
-        String color = "#" + new String(colorCode);
-        Log.d("myTag", "here");
-        view.setBackgroundColor(Color.parseColor(color));
-        view.invalidate();
+        String colorCodeString = "#" + new String(colorCode); //hex color code
+
+        int colorNum = Color.parseColor(colorCodeString); //int representation of color
+        view.setBackgroundColor(colorNum);
+        view.invalidate(); //Reload view
+        updateTextColorCode(colorCodeString,colorNum); //Update hex code on screen
+        updateColorName(colorNum); //Update color name on screen
+
     }
 
 
@@ -44,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void run()
         {
-            randomColors();
+            randomBackgroundColor();
             handler.postDelayed(runnable, 500);
         }
     };
@@ -57,5 +62,21 @@ public class MainActivity extends AppCompatActivity {
     //When stop is clicked
     public void onStopClick(View view) {
         handler.removeCallbacks(runnable);
+    }
+
+
+    public void updateTextColorCode(String hexcode, int colorNum) {
+        TextView colorText = (TextView) findViewById(R.id.colorText);
+        colorText.setText(hexcode); //Update text content
+        colorText.setTextColor(colorNum);
+    }
+
+    public void updateColorName(int colorNum) {
+        ColorUtils color = new ColorUtils();
+        String colorName = color.getColorNameFromHex(colorNum);
+        TextView colorNameText = (TextView) findViewById(R.id.colorName);
+        colorNameText.setText(colorName);
+        colorNameText.setTextColor(colorNum);
+        //Log.i("checking",colorName);
     }
 }

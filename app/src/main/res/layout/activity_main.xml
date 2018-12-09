@@ -6,6 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/text4"
+        android:layout_width="161dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="22dp"
+        android:background="#FFF"
+        android:gravity="center"
+        android:text="Color Name:"
+        android:textColor="#000000"
+        android:textSize="57px"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/colorName"
+        app:layout_constraintTop_toBottomOf="@+id/text2" />
+
+    <TextView
+        android:id="@+id/colorName"
+        android:layout_width="161dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="43dp"
+
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="20dp"
+        android:background="#FFF"
+        android:text="Color"
+        android:textColor="#000000"
+        android:textSize="67px"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/colorText" />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="161dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        android:background="#FFF"
+        android:gravity="center"
+        android:text="Color Hex Code:"
+        android:textColor="#000000"
+        android:textSize="57px"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/colorText"
+        app:layout_constraintTop_toBottomOf="@+id/startButton" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
@@ -36,4 +88,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/colorText"
+        android:layout_width="90dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="82dp"
+        android:layout_marginRight="82dp"
+        android:background="#FFF"
+        android:gravity="center"
+        android:text="Color#"
+        android:textColor="#000000"
+        android:textSize="67px"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startButton" />
+
 </android.support.constraint.ConstraintLayout>
